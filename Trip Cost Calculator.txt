@@ -1,0 +1,58 @@
+# Trip Cost
+# Task 1: Hotel Cost Function
+
+def hotel_cost(nights): 
+    cost_per_night = 140 
+    total_cost = nights * cost_per_night 
+    return total_cost 
+
+# Task 2: Flight Cost Function
+
+def plane_ride_cost(city):
+    if city == "Charlotte": 
+        return 183 
+    elif city == "Tampa": 
+        return 220 
+    elif city == "Pittsburgh": 
+        return 222 
+    elif city == "Los Angeles": 
+        return 475 
+    else:
+        return 0
+
+# Task 3: Car Rental Cost Function
+
+def rental_car_cost(days): 
+    cost_per_day = 40 
+    total_cost = days * cost_per_day
+    if days >= 7: 
+        total_cost = total_cost - 50 
+    elif days >= 3: 
+        total_cost = total_cost - 20 
+        
+    return total_cost 
+
+# Task 4: Trip Cost Function
+
+def trip_cost(nights, city, days, spending_money): 
+    hotel = hotel_cost(nights) 
+    flight = plane_ride_cost(city) 
+    car = rental_car_cost(days) 
+
+    # Task 5: Enhanced Trip Cost Calculation
+    if flight != 0:
+        total = hotel + flight + car + spending_money
+    else:
+        total = "City not listed..."
+    
+    
+    return total
+
+
+nights = int(input("Enter the number of nights you will stay: ")) 
+city = input("Enter the city you are flying to: ").title()
+days = int(input("Enter the number of rental days: ")) 
+spending_money = int(input("Enter your spending money budget: "))
+
+print("Total trip cost: $", trip_cost(nights, city, days, spending_money))
+
